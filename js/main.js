@@ -33,7 +33,7 @@ function buildCards(recipes){
     const a = document.createElement('a');
     a.className = 'btn btn-primary';
     a.innerText = 'View recipe';
-    a.href= `/recipes/${recipe.id}`;
+    a.href= `/recipes.html?id=${recipe.id}`;
     
     cardBody.appendChild(h5);
     cardBody.appendChild(a);
