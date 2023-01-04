@@ -16,8 +16,8 @@
   <main>
     <div class="container py-4">
       <header class="pb-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">          
-          <img class="icon m-2" src="assets/salt_icon.svg" alt="Find a Recipe">          
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+          <img class="icon m-2" src="assets/salt_icon.svg" alt="Find a Recipe">
           <span class="fs-4">Find a recipe</span>
         </a>
       </header>
@@ -26,7 +26,7 @@
         <div class="container-fluid py-5">
           <h1>Find a recipe</h1>
           <p class="col-md-8 fs-4">Type ingredients and find out recipes that use them.</p>
-          <input id="search" class="form-control" type="text" placeholder="ingredients..." onkeypress="search" />
+          <input id="search" class="form-control" type="text" placeholder="ingredients..." />
         </div>
       </div>
 
@@ -46,6 +46,16 @@
   <script src="js/config.js"></script>
   <script src="js/api.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    const input = document.getElementById("search");
+    input.addEventListener("keypress", function (event) {
+      if (event.key === "Enter") {
+        searchByIngredients(event.target.value).then(
+          response => buildCards(response)
+        );
+      }
+    });
+  </script>
 </body>
 
 </html>

@@ -21,8 +21,8 @@
     </div>
 
     <!-- section that will receive the search results -->
-    <section id="recipes" class="row">
-    </section>
+    <article id="recipe" class="container">
+    </article>
 
     <footer class="pt-3 mt-4 text-muted border-top">
       Mario Sousa © 2022
@@ -43,7 +43,7 @@
         get: (searchParams, prop) => searchParams.get(prop),
       });
       
-      alert(params.id);
+      fetchRecipe(params.id);
     });
   </script>
 </body>

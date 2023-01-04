@@ -1,13 +1,3 @@
-const input = document.getElementById("search");
-
-input.addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    searchByIngredients(event.target.value).then(
-      response => buildCards(response)
-    );
-  }
-});
-
 /**
  * Create cards with recipes returned
  * @param {*} recipes array
@@ -45,4 +35,44 @@ function buildCards(recipes){
 
     document.getElementById('recipes').appendChild(div);
   });
+}
+
+/*
+Fetch a recipe by id
+*/
+function fetchRecipe(id){
+  getRecipeById(id).then(response => buildRecipe(response));
+}
+
+/*
+build dom elements to represent the recipe.
+The element built will be appended to a section with id #recipe
+*/
+function buildRecipe(recipe){
+  
+  const title = document.createElement("h2");
+  title.innerText = recipe.title;
+
+  const summaryHeader = document.createElement("h3");
+  summaryHeader.innerText = "Summary";
+  const summary = document.createElement("p");
+  summary.innerHTML = recipe.summary;
+
+  const img = document.createElement("img");
+  img.className = "img-fluid";
+  img.alt = recipe.title;
+  img.src = recipe.image;
+  
+  const instructions = document.createElement("section");
+  instructions.innerHTML = recipe.instructions;
+  const instructionsHeader = document.createElement("h3");
+  instructionsHeader.innerText = "Instructions";
+  instructions.prepend(instructionsHeader);
+
+
+  document.getElementById("recipe").appendChild(title);
+  document.getElementById("recipe").appendChild(img);
+  document.getElementById("recipe").appendChild(summaryHeader);
+  document.getElementById("recipe").appendChild(summary);
+  document.getElementById("recipe").appendChild(instructions);
 }
