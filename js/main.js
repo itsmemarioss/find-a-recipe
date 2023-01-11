@@ -69,10 +69,45 @@ function buildRecipe(recipe){
   instructionsHeader.innerText = "Instructions";
   instructions.prepend(instructionsHeader);
 
+  const ingredientsDiv =  document.createElement("div");
+  const ingredientsHeader = document.createElement("h3");
+  ingredientsHeader.innerText = 'Ingredients';
+  ingredientsDiv.appendChild(ingredientsHeader);
+  ingredientsDiv.appendChild(createIngredients(recipe.extendedIngredients));
 
   document.getElementById("recipe").appendChild(title);
   document.getElementById("recipe").appendChild(img);
   document.getElementById("recipe").appendChild(summaryHeader);
   document.getElementById("recipe").appendChild(summary);
+  document.getElementById("recipe").appendChild(ingredientsDiv);
   document.getElementById("recipe").appendChild(instructions);
+}
+
+/*
+Create html elment for each ingredient in the list.
+*/
+function createIngredients(ingredients){
+  const list = document.createElement("ol");
+  
+  //for each ingredient a new list item will be create with name - amout unit
+  ingredients.forEach( ingredient => {
+    const li = document.createElement("li");
+    const link = document.createElement("a");
+    // TODO add amount to the url
+    link.href= `/ingredient.html?id=${ingredient.id}`;
+    
+    link.innerText = `${ingredient.nameClean} - ${ingredient.amount} ${ingredient.unit}`;
+    li.appendChild(link);
+    list.appendChild(li);
+  });
+  return list;
+}
+
+/*
+Fetch ingredient by id
+*/
+function fetchIngredientById(id){
+  alert(id);
+  document.getElementById("ingredient").innerText = `${id}`;
+  console.log(getIngredientById(id));
 }
