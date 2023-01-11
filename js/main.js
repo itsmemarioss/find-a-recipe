@@ -52,6 +52,8 @@ function buildRecipe(recipe){
   
   const title = document.createElement("h2");
   title.innerText = recipe.title;
+  // update the page title with the recipe title
+  document.title = `${document.title} | ${recipe.title} `;
 
   const summaryHeader = document.createElement("h3");
   summaryHeader.innerText = "Summary";
