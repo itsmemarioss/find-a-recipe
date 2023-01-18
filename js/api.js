@@ -49,6 +49,7 @@ async function getIngredientById(id, amount = 1){
   //create query params to be add to the url
   const params = new URLSearchParams({
     apiKey: config.apiKey,
+    amount: amount
   });
   const response = await fetch(url+params,{});
   if (!response.ok) {
@@ -56,4 +57,8 @@ async function getIngredientById(id, amount = 1){
   }
   const responseData = await response.json();
   return responseData;
+}
+
+function getIngredientImageUrl(img) {
+  return ingredientImageUrl.replace('{img}',img);
 }

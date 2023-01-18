@@ -30,7 +30,7 @@ function buildCards(recipes){
     
     card.appendChild(cardBody);
     const div = document.createElement('div');
-    div.className = 'col-lg-3 col-md-4 col col-sm-4 mt-md-2';
+    div.className = 'col-6 col-sm-4 col-md-4 col-lg-3 mt-md-2';
     div.appendChild(card);
 
     document.getElementById('recipes').appendChild(div);
@@ -95,8 +95,7 @@ function createIngredients(ingredients){
   ingredients.forEach( ingredient => {
     const li = document.createElement("li");
     const link = document.createElement("a");
-    // TODO add amount to the url
-    link.href= `/ingredient.html?id=${ingredient.id}`;
+    link.href= `/ingredient.html?id=${ingredient.id}&amount=${ingredient.amount}`;
     
     link.innerText = `${ingredient.nameClean} - ${ingredient.amount} ${ingredient.unit}`;
     li.appendChild(link);
@@ -108,8 +107,60 @@ function createIngredients(ingredients){
 /*
 Fetch ingredient by id
 */
-function fetchIngredientById(id){
-  alert(id);
-  document.getElementById("ingredient").innerText = `${id}`;
-  console.log(getIngredientById(id));
+function fetchIngredientById(id, amount){
+  getIngredientById(id, amount).then( ingredient => buildIngredient(ingredient));
+}
+
+function buildIngredient(ingredient){
+  const row = document.createElement("div");
+  row.className = "row";
+  document.getElementById("ingredient").appendChild(row);
+
+  const title = document.createElement("h2");
+  title.innerText = `${ingredient.amount} ${ingredient.name}`;
+  document.title = `${document.title} | ${ingredient.name} `;
+
+  const img = document.createElement("img");
+  img.className = "img-fluid";
+  img.alt = ingredient.name;
+  img.src = getIngredientImageUrl(ingredient.image);
+  
+  const leftColumn = document.createElement("div");
+  leftColumn.className = "col-6";
+
+  const rightColumn = document.createElement("div");
+  rightColumn.className = "col-6";
+  const nutrientsRow = document.createElement("div");
+  nutrientsRow.className = "row";
+  rightColumn.appendChild(nutrientsRow);
+  ingredient.nutrition.nutrients
+    .map(nutrient => {
+      const element = document.createElement("div");
+      element.className = 'col';
+      element.style = `background-color: ${getRandomColor()}`;
+      element.innerHTML=`${nutrient.name} ${nutrient.amount}${nutrient.unit}`;
+      return element;
+    })
+    .forEach(element => nutrientsRow.appendChild(element) );
+
+  leftColumn.appendChild(title);
+  leftColumn.appendChild(img);
+  row.appendChild(leftColumn);
+  row.appendChild(rightColumn);
+}
+
+/*
+Pick one out of 4 colors in random order.
+On each execution the funtion will generate a random index from 0 to 3
+and use it as index to access the array.
+ */
+function getRandomColor(){
+  const colors = [
+    "#7FFFD4", //aquamarine
+    "#F0FFFF", //azure
+    "#7FFF00", //chartreuse
+    "#FF8C00" //dark orange
+  ];
+  const index = Math.floor(Math.random() * 4);
+  return colors[index];
 }
