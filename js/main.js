@@ -2,38 +2,50 @@
  * Create cards with recipes returned
  * @param {*} recipes array
  */
-function buildCards(recipes){
-  recipes.forEach(recipe => {    
-    const card = document.createElement('div');
-    card.className = 'card';
-    
-    const img = document.createElement('img');
-    img.className = 'card-img-top';
-    img.src = recipe.image;
-    card.appendChild(img);
-    
-    const cardBody = document.createElement('div');
-    cardBody.className = 'card-body';
-    
-    const h5 = document.createElement('h5');
-    h5.className = 'card-title';
-    h5.innerText = recipe.title;
+function buildSearchResult(recipes){
+  //clean the area before presenting the result.
+  document.getElementById('recipes').innerHTML = "";
 
-    const a = document.createElement('a');
-    a.className = 'btn btn-primary';
-    a.innerText = 'View recipe';
-    a.href= `/recipes.html?id=${recipe.id}`;
-    
-    cardBody.appendChild(h5);
-    cardBody.appendChild(a);
-    
-    card.appendChild(cardBody);
-    const div = document.createElement('div');
-    div.className = 'col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mt-md-2';
-    div.appendChild(card);
+  if(recipes.length > 0){
 
-    document.getElementById('recipes').appendChild(div);
-  });
+    
+    recipes.forEach(recipe => {    
+      const card = document.createElement('div');
+      card.className = 'card';
+      
+      const img = document.createElement('img');
+      img.className = 'card-img-top';
+      img.src = recipe.image;
+      card.appendChild(img);
+    
+      const cardBody = document.createElement('div');
+      cardBody.className = 'card-body';
+      
+      const h5 = document.createElement('h5');
+      h5.className = 'card-title';
+      h5.innerText = recipe.title;
+      
+      const a = document.createElement('a');
+      a.className = 'btn btn-primary';
+      a.innerText = 'View recipe';
+      a.href= `/recipes.html?id=${recipe.id}`;
+      
+      cardBody.appendChild(h5);
+      cardBody.appendChild(a);
+      
+      card.appendChild(cardBody);
+      const div = document.createElement('div');
+      div.className = 'col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mt-md-2';
+      div.appendChild(card);
+      
+      document.getElementById('recipes').appendChild(div);
+    });
+  } else {
+    document.getElementById('recipes').innerHTML = `
+    <div class="d-flex justify-content-center">
+      <p>No recipes were found!</p>
+    </div>`;
+  }
 }
 
 /*
@@ -132,6 +144,7 @@ function buildIngredient(ingredient){
   const nutrientsRow = document.createElement("div");
   nutrientsRow.className = "row";
   rightColumn.appendChild(nutrientsRow);
+  // for each nutrient a new div is created with a random background color
   ingredient.nutrition.nutrients
     .map(nutrient => {
       const element = document.createElement("div");

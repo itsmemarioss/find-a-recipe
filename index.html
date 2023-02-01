@@ -47,11 +47,14 @@
   <script src="js/api.js"></script>
   <script src="js/main.js"></script>
   <script>
+    //add an envent listener to the input. 
     const input = document.getElementById("search");
     input.addEventListener("keypress", function (event) {
+      //when enter is pressed a new search will be made.
       if (event.key === "Enter") {
+
         searchByIngredients(event.target.value).then(
-          response => buildCards(response)
+          response => buildSearchResult(response)
         );
       }
     });

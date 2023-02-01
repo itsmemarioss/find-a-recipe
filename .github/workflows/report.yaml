@@ -23,5 +23,5 @@ jobs:
 
       - uses: actions/upload-artifact@v1
         with:
-          name: docs
-          path: pdfs
+          name: README.pdf
+          path: pdfs/README.pdf

@@ -5,7 +5,8 @@ const ingredientImageUrl = 'https://spoonacular.com/cdn/ingredients_500x500/{img
 const ingredientInformationUrl = 'https://api.spoonacular.com/food/ingredients/{id}/information?';
 
 /*
-Search recipese by ingredients
+Search recipese by ingredients. 
+The list of ingredients passed to the function is later used as a query param.
 */
 async function searchByIngredients(ingredients){
   //create query params to be add to the url
