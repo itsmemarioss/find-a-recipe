@@ -6,7 +6,6 @@ function buildCards(recipes){
   recipes.forEach(recipe => {    
     const card = document.createElement('div');
     card.className = 'card';
-    card.style = 'width: 18rem;'
     
     const img = document.createElement('img');
     img.className = 'card-img-top';
@@ -30,7 +29,7 @@ function buildCards(recipes){
     
     card.appendChild(cardBody);
     const div = document.createElement('div');
-    div.className = 'col-6 col-sm-4 col-md-4 col-lg-3 mt-md-2';
+    div.className = 'col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mt-md-2';
     div.appendChild(card);
 
     document.getElementById('recipes').appendChild(div);
@@ -126,17 +125,17 @@ function buildIngredient(ingredient){
   img.src = getIngredientImageUrl(ingredient.image);
   
   const leftColumn = document.createElement("div");
-  leftColumn.className = "col-6";
+  leftColumn.className = "col-12 col-sm-6";
 
   const rightColumn = document.createElement("div");
-  rightColumn.className = "col-6";
+  rightColumn.className = "col-12 col-sm-6";
   const nutrientsRow = document.createElement("div");
   nutrientsRow.className = "row";
   rightColumn.appendChild(nutrientsRow);
   ingredient.nutrition.nutrients
     .map(nutrient => {
       const element = document.createElement("div");
-      element.className = 'col';
+      element.className = 'col m-2 shadow';
       element.style = `background-color: ${getRandomColor()}`;
       element.innerHTML=`${nutrient.name} ${nutrient.amount}${nutrient.unit}`;
       return element;
