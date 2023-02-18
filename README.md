@@ -6,6 +6,12 @@ This project was built only with HTML, CSS and vanilla JavaScript. It is part of
 
 The project uses [Spoonacular API](https://spoonacular.com/food-api) to find recipes based on ingredients.
 
+## Demo
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3EUDertcewE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
 ## How to run
 
 1. Create a file `js/config.js` with the spoonacular api key.
