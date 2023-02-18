@@ -3,6 +3,7 @@
   width: 50px;
 }
 
+/* logo animation */
 .fadein { animation: fadeIn 5s; }
 
 @keyframes fadeIn {

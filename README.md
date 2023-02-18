@@ -1,4 +1,5 @@
 # find-a-recipe
+
 Find a recipe based on ingredients.
 
 This project was built only with HTML, CSS and vanilla JavaScript. It is part of the final project of web programming and multimedia course.
