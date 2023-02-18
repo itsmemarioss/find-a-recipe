@@ -8,9 +8,7 @@ The project uses [Spoonacular API](https://spoonacular.com/food-api) to find rec
 
 ## Demo
 
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3EUDertcewE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+[![IMAGE_ALT](https://img.youtube.com/vi/3EUDertcewE/mqdefault.jpg)](https://youtu.be/3EUDertcewE)
 
 ## How to run
 
